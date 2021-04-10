@@ -28,6 +28,7 @@ function App() {
     isNew? slicesList.push([1,1200,10,90,tempSlides.length+1]) : slicesList.push([parseInt(leftSlice * 2),parseInt(rightSlice * 2),10,90,tempSlides.length+1])
     setSlices([...slicesList]);
     isNew? tempSlides.push({id: tempSlides.length+1, start: 10.00, end: 11.00, min_start: '10%' , min_end: '90%' }) : tempSlides.push({id: tempSlides.length+1, start: (10+(leftSlice/1000)), end: (10+(rightSlice/1000)), min_start: '10%' , min_end: '90%' })
+    console.log("IS New?",isNew,slicesList,tempSlides);
     setSlicedSections([...tempSlides]);
   }
 
@@ -93,6 +94,15 @@ function App() {
       }
     }
     setSlices([...sliced]);
+    if(selectedSection !== null){
+      let tempSlides = slicedSections;
+      if(type === 0){
+        slicedSections[selectedIndex].start = sld;
+      } else {
+        slicedSections[selectedIndex].end = sld;
+      }
+      setSlicedSections([...tempSlides]);
+    }
   }
 
   return (

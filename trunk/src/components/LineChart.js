@@ -31,7 +31,7 @@ function LineChart(props) {
     return (
       <div className={"card"}>
         <div className={"card-header"}>
-            <button className={"header-btn"} onClick={props.addSlice}><img src="scissor.svg" alt="slice"/></button>
+            <button className={"header-btn"} onClick={()=>props.addSlice(false)}><img src="scissor.svg" alt="slice"/></button>
             <p>Selected Channels</p>
         </div>
         <RangePickers left={props.leftSlider} right={props.rightSlider} rightVal={props.rightVal} leftVal={props.leftVal} change={attachedSlices}/>
