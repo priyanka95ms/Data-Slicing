@@ -3,6 +3,7 @@ An SVG based chart to display channels and data slicing for visualization.
 
 click on trunk folder to view the source code.
 
+Please read till the end of the document to understand the inputs to the project.
 # Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
