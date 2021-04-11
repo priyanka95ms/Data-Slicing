@@ -2,10 +2,11 @@ import './assets/sass/chart.scss';
 import LineChart from './components/LineChart';
 import ChannelButtons from './components/ChannelButton';
 import SlicedSection from './components/SlicedSection';
+import Dataset from './constants/Dataset.json';
 import { useState } from 'react';
 
 function App() {
-  const [activeChannels,setActiveChannels] = useState([]);
+  const [activeChannels,setActiveChannels] = useState([Dataset[0],Dataset[1],Dataset[2],Dataset[3],Dataset[4]]);
   const [slicedSections,setSlicedSections] = useState([]);
   const [leftSlice,setLeftSlice] = useState(0);
   const [rightSlice,setRightSlice] = useState(0);
@@ -28,7 +29,6 @@ function App() {
     isNew? slicesList.push([1,1200,10,90,tempSlides.length+1]) : slicesList.push([parseInt(leftSlice * 2),parseInt(rightSlice * 2),10,90,tempSlides.length+1])
     setSlices([...slicesList]);
     isNew? tempSlides.push({id: tempSlides.length+1, start: 10.00, end: 11.00, min_start: '10%' , min_end: '90%' }) : tempSlides.push({id: tempSlides.length+1, start: (10+(leftSlice/1000)), end: (10+(rightSlice/1000)), min_start: '10%' , min_end: '90%' })
-    console.log("IS New?",isNew,slicesList,tempSlides);
     setSlicedSections([...tempSlides]);
   }
 
@@ -43,9 +43,11 @@ function App() {
     setLeftSlice(prop);
     if(selectedSection !== null){
       let tempSlides = slicedSections;
-      tempSlides[selectedSection].start = 10+(parseInt(leftSlice) / 1000);
-      tempSlides[selectedSection].end = 10+(parseInt(rightSlice) / 1000);
-      setSlicedSections([...tempSlides]);
+      if(tempSlides[selectedSection] !== undefined) {
+        tempSlides[selectedSection].start = 10+(parseInt(leftSlice) / 1000);
+        tempSlides[selectedSection].end = 10+(parseInt(rightSlice) / 1000);
+        setSlicedSections([...tempSlides]);
+      }
     }
   }
 
@@ -53,21 +55,31 @@ function App() {
     setRightSlice(prop);
     if(selectedSection !== null){
       let tempSlides = slicedSections;
-      tempSlides[selectedSection].start = 10+(parseInt(leftSlice) / 1000);
-      tempSlides[selectedSection].end = 10+(parseInt(rightSlice) / 1000);
-      setSlicedSections([...tempSlides]);
+      if(tempSlides[selectedSection] !== undefined) {
+        tempSlides[selectedSection].start = 10+(parseInt(leftSlice) / 1000);
+        tempSlides[selectedSection].end = 10+(parseInt(rightSlice) / 1000);
+        setSlicedSections([...tempSlides]);
+      }
     }
   }
 
-  let selectSection = (prop) => {
+  let selectSection = (prop,evt) => {
     if(selectedSection === prop){
-      setSelectedSection(null);
-      setLeftSlice(1);
-      setRightSlice(1);
+      if(evt.target.type === "number") {
+        
+      } else {
+        setSelectedSection(null);
+        setLeftSlice(1);
+        setRightSlice(1);
+      }
     } else {
-      setSelectedSection(prop);
-      setLeftSlice(slices[prop][0]/2);
-      setRightSlice(slices[prop][1]/2);
+      if(evt.target.type === "number") {
+        
+      } else {
+        setSelectedSection(prop);
+        setLeftSlice(slices[prop][0]/2);
+        setRightSlice(slices[prop][1]/2);
+      }
     }
   }
 

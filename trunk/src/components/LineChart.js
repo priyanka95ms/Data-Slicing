@@ -40,7 +40,11 @@ function LineChart(props) {
             <ChartLabelsX/>
             <ChartGrid/>
             {props.active.map((item,index)=>{
-                return <Line color={item.color}/>;
+                if(item.enabled === true){
+                    return <Line color={item.color} y={item.y}/>;
+                } else {
+                    return null;
+                }
             })}
         </div>
         {

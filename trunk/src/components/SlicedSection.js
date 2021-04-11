@@ -1,7 +1,7 @@
 function SlicedSection(props) {
     
     return (
-        <div className={props.selected === true ? "card card-selected" : "card"} onClick={()=>props.select(props.ind)}>
+        <div className={props.selected === true ? "card card-selected" : "card"} onClick={(evt)=>props.select(props.ind,evt)}>
             <div className={"display-flex section-container"}>
                 <div className={"display-flex"}>
                     <p>ID</p>

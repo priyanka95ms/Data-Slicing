@@ -124,7 +124,7 @@ input {
 .x-label-container {
   position: absolute;
   display: -webkit-box;
-  top: 325px;
+  top: 340px;
   height: 5px;
 }
 
@@ -136,6 +136,22 @@ input {
 
 .channel-content {
   width: 120px;
+  height: 25px;
+}
+
+.channel-content p {
+  width: 100%;
+  cursor: pointer;
+  color: white;
+}
+
+.channel-container {
+  padding: 5px 10px;
+  border: 1px solid lightgray;
+}
+
+.channel-header {
+  padding: 5px 5px 5px 0;
 }
 
 .card-header {
@@ -168,7 +184,6 @@ input {
 }
 
 input[type=range] {
-  z-index: 999;
   margin: 0;
   max-width: 1195px;
   width: 1195px;
@@ -230,7 +245,7 @@ input[type=range] {
 .slice-container {
   position: absolute;
   margin-left: calc(48% - 600px);
-  top: 123px;
+  top: 135px;
 }
 
 .card-selected {
